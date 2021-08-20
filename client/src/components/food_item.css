@@ -1,0 +1,12 @@
+h1{
+    font-size: 20px !important;
+}
+
+.img-fluid{
+    height: 200px;
+    width: 200px;
+}
+.flex-container{
+    display: flex;
+}
+
