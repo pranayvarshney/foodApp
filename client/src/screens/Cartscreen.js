@@ -11,7 +11,7 @@ function Cartscreen() {
     const currentUserState = useSelector(state => state.loginUserReducer)
     const {currentUser}= currentUserState
     function handleClick() {
-        
+        console.log("sdsd", currentUser)
         var subTotal = cartItems.reduce((x, item) => x + item.price, 0)
         dispatch(placeOrder(subTotal, cartItems))
         
@@ -51,7 +51,7 @@ function Cartscreen() {
                     <h2 style={{fontSize:'45px'}}> SubTotal {subTotal} /-</h2>
                     <button className="btn btn-danger" onClick = {
                         ()=>{
-                        if(currentUser){
+                        if(currentUser.length!==0){
                             handleClick()
                         }
                         else{
@@ -62,7 +62,7 @@ function Cartscreen() {
                         
                         
                         }
-                    }> <a href="/orders"  className='nav-link' style={{textDecoration:"none"}}>  Check Out</a>  </button>
+                    }> <a href={currentUser.length!==0?"orders":'/'} className='nav-link' style={{textDecoration:"none"}}>  Check Out</a>  </button>
                 </div>
             </div>
         </div>
