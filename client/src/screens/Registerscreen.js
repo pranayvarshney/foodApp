@@ -53,7 +53,12 @@ export default function Registerscreen() {
                 email,
                 password
             }
-            dispatch(registerUser(user))
+            try {
+                dispatch(registerUser(user))
+            } catch (error) {
+                alert('Error creating user')
+            }
+           
         }
     }
 

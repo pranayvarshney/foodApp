@@ -9,8 +9,9 @@ export const registerUser=(user)=> async dispatch=>{
        const response = await axios.post('/api/user/register',user)
     //    console.log(response);
         dispatch({ type: "USER_REGISTER_SUCCESS" })
+        window.location.href= '/signin'
     } catch (error) {
-       
+        
         dispatch({ type: "USER_REGISTER_FAILED"  , payload :error})
     }
 }

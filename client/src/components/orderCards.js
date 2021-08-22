@@ -6,8 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
 
-import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
+
 
 const labels = {
     0.5: 'Useless',
@@ -42,31 +41,29 @@ const useStyles = makeStyles({
 });
 
 
-export default function SimpleCard({order,orderid}) {
+export default function SimpleCard({order}) {
     const classes = useStyles();
     
     const {cartItems, createdAt,subTotal,_id} = order
-    
-    const [value, setValue] = useState(order.rating);
-    const [hover, setHover] = useState(-1);
-    useEffect(async() => {
-        await axios.post('/api/orders/rating', {value,_id})
+   
+    // useEffect(async() => {
+    //     await axios.post('/api/orders/rating', {value,_id})
         
-    }, [value])
+    // }, [value])
     return (
-        <Card key={orderid} className={classes.root} style ={{border: 'black solid 2px', width : 'max-content', margin : '10px',}}>
+        <Card className={classes.root} style ={{border: 'black solid 2px', width : 'max-content', margin : '10px',}}>
             <CardContent>
                 <Typography variant="h5" component="h2">
                    Order Receipt
                 </Typography>
                 <Typography variant="h5" component="h6">
-                    <ul>
+                    <ol className="list-group">
                     { cartItems.map((item)=>{
                         return (
-                            <li>{item.name}</li>
+                            <li className="list-group-item">{item.name}</li>
                         )
                     }) }
-                    </ul>
+                    </ol>
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
                     Transaction time :   {createdAt}
@@ -75,23 +72,7 @@ export default function SimpleCard({order,orderid}) {
                 </Typography>
                 <Typography variant="h5" component="h4"> Transaction id : {_id}
                 </Typography>
-                   <div className="row">
-                    <div className={classes.root}>
-                        <Rating
-                            name="hover-feedback"
-                            value={value}
-                            precision={0.5}
-                            onChange={(event, newValue) => {
-
-                              setValue(newValue);
-                            }}
-                            onChangeActive={(event, newHover) => {
-                                setHover(newHover);
-                            }}
-                        />
-                        {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
-                    </div> 
-                   </div>
+                   
             </CardContent>
             
         </Card>

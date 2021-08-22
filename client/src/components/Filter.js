@@ -11,7 +11,7 @@ function Filter() {
         <div className='container'>
             <div className="row justify-content-center align-items-center shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="col-md-3 w-100 ">
-                    <input type='text' className='form-control' placeHolder= 'search for items'
+                    <input type='text' className='form-control' placeholder= 'search for items'
                     value={searchkey} onChange={(e)=>{setsearchkey(e.target.value)}}
                     ></input>
                 </div>

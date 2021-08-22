@@ -39,12 +39,12 @@ function OrderScreen() {
             
             {orders? orders.reverse().map((order)=>{
               return (
-                  <div key={order._id}> <SimpleCard order={order} orderid={order._id} /></div>
+                  <div key={order._id}> <SimpleCard order={order}/></div>
                  
                 
               )
                
-            }) : console.log("notloaded")}
+            }) : <h1>No orders available</h1>}
         </div>
     )
 }

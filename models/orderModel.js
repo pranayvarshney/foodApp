@@ -7,8 +7,8 @@ const orderSchema = mongoose.Schema({
     userId : {type : String , require},
     cartItems : [],
     subTotal :{type : Number , required : true },
-    transactionID : {type :String, require},
-    rating : {type :Number , default : 0}
+    transactionID : {type :String, require}
+    
 },
 {
     timestamps : true
