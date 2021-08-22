@@ -37,7 +37,7 @@ function OrderScreen() {
     return (
         <div style ={{ display: 'flex',flexDirection:'column',alignItems: 'center' ,justifyContent : 'center', width : '100%', marginLeft : 'auto'}}>
             
-            {orders? orders.reverse().map((order)=>{
+            {orders?orders.length<1?<h1>No orders yet</h1> :orders.reverse().map((order)=>{
               return (
                   <div key={order._id}> <SimpleCard order={order}/></div>
                  

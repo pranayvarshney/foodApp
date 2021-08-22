@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import axios from 'axios'
@@ -41,25 +41,26 @@ const useStyles = makeStyles({
 });
 
 
-export default function SimpleCard({order}) {
+export default function SimpleCard({ order }) {
     const classes = useStyles();
-    
-    const {cartItems, createdAt,subTotal,_id} = order
-   
-   
+
+    const { cartItems, createdAt, subTotal, _id } = order
+    const [rating, setrating] = useState(order.rating)
+    useEffect(() => { axios.post('/api/orders/rating', { rating, _id }) }
+        , [rating])
     return (
-        <Card className={classes.root} style ={{border: 'black solid 2px', width : 'max-content', margin : '10px',}}>
+        <Card className={classes.root} style={{ border: 'black solid 2px', width: 'max-content', margin: '10px', }}>
             <CardContent>
                 <Typography variant="h5" component="h2">
-                   Order Receipt
+                    Order Receipt
                 </Typography>
                 <Typography variant="h5" component="h6">
                     <ol className="list-group">
-                    { cartItems.map((item)=>{
-                        return (
-                            <li className="list-group-item">{item.name}</li>
-                        )
-                    }) }
+                        {cartItems.map((item) => {
+                            return (
+                                <li className="list-group-item">{item.name}</li>
+                            )
+                        })}
                     </ol>
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
@@ -69,9 +70,14 @@ export default function SimpleCard({order}) {
                 </Typography>
                 <Typography variant="h5" component="h4"> Transaction id : {_id}
                 </Typography>
-                   
+                <div className="row">
+                    <div className="ml-4">Rate Your Order</div>
+                    <select className='form-control' value={rating} onChange={(e) => setrating(e.currentTarget.value)}>{[...Array(5).keys()].map((x, i) => {
+                        return <option value={i + 1}>{i + 1} stars</option>
+                    })}</select>
+                </div>
             </CardContent>
-            
+
         </Card>
     );
 }
