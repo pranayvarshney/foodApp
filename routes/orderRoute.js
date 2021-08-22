@@ -20,15 +20,7 @@ router.post('/neworder', (req, res) => {
     }
 }
 )
-// router.post('/rating',async (req, res) => {
-//     const { value,_id } = req.body
-//     try {
-//         await placeOrder.updateOne({ _id: _id }, { $set: { rating:value}})
-//     } catch (error) {
-//      console.log(error)
-//     }
-// }
-// )
+
 
 router.get('/allorders/:email', async (req, res) => {
      const {email} = req.params

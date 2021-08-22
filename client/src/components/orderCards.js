@@ -46,10 +46,7 @@ export default function SimpleCard({order}) {
     
     const {cartItems, createdAt,subTotal,_id} = order
    
-    // useEffect(async() => {
-    //     await axios.post('/api/orders/rating', {value,_id})
-        
-    // }, [value])
+   
     return (
         <Card className={classes.root} style ={{border: 'black solid 2px', width : 'max-content', margin : '10px',}}>
             <CardContent>
