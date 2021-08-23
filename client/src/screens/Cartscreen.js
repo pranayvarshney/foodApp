@@ -10,12 +10,15 @@ function Cartscreen() {
     const dispatch = useDispatch()
     const currentUserState = useSelector(state => state.loginUserReducer)
     const {currentUser}= currentUserState
+    
     function handleClick() {
+       
         console.log("sdsd", currentUser)
         var subTotal = cartItems.reduce((x, item) => x + item.price, 0)
         dispatch(placeOrder(subTotal, cartItems))
-        
         localStorage.removeItem("cartItems")
+        
+        
     }
 
 
@@ -62,7 +65,8 @@ function Cartscreen() {
                         
                         
                         }
-                    }> <a href={currentUser.length!==0?"orders":'/'} className='nav-link' style={{textDecoration:"none"}}>  Check Out</a>  </button>
+                    }>  
+                         <a href={currentUser.length!==0?"orders":'/signin'} className='nav-link' style={{textDecoration:"none"}}>  Check Out</a>  </button>
                 </div>
             </div>
         </div>
