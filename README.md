@@ -39,7 +39,15 @@ Created For DevSoc
 
 ![image](https://user-images.githubusercontent.com/75934932/130675687-205e5415-e237-47fa-9c57-b59d2a168034.png)
 
+---
 
+# Experience 
+1) Learned integrating backend and the frontend
+2) Learned using redux 
+3) Learned hosting app on heroku
+4) Used bcrypt to hash passwords
+5) Used material UI components
+6) Used mongoose to connect to mongoDB
 
 
 
